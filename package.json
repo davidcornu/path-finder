@@ -1,0 +1,15 @@
+{
+  "name": "pathfinder",
+  "version": "0.0.1",
+  "description": "Named routes for Express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "David Cornu <david@busbud.com>",
+  "license": "BSD",
+  "dependencies": {
+    "methods": "0.0.1"
+  }
+}
