@@ -2,7 +2,6 @@ var methods = require('methods');
 var keyRxp  = /:(\w+)/;
 
 exports.extend = function(app){
-
   app._paths = {};
 
   app.addPath = function(pathName, pathString){
@@ -40,7 +39,7 @@ exports.extend = function(app){
     app[method] = function(){
       var args = Array.prototype.slice.call(arguments);
 
-      function proxy(){ return original.apply(apps, args); }
+      function proxy(){ return original.apply(app, args); }
 
       if (args.length < 3) return proxy();
       if (typeof args[0] !== 'string' || typeof args[1] !== 'string') return proxy();
@@ -52,11 +51,9 @@ exports.extend = function(app){
   });
 
   app.path = function(pathName, keys){
-    keys = keys || {};
     if (!app._paths[pathName]) throw 'Path ' + pathName + ' is not defined.';
     return app._paths[pathName](keys);
   }
 
   app.locals({p: path});
-
 }
