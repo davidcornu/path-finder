@@ -1,24 +1,27 @@
 var methods = require('methods');
+var keyRxp  = /:(\w+)/;
 
 exports.extend = function(app){
 
   app._paths = {};
 
   app.addPath = function(pathName, pathString){
-    // var testString = '/:userId/:postId/:commentId/edit';
-    // var buf = [];
+    var buf = [];
 
-    // testString.split('/').forEach(function(part){
-    //     if (!/:(\w+)/.test(part)) return buf.push('"' + part + '"');
-    //     buf.push('keys["' + part.match(/:(\w+)/)[1] + '"]');
-    // });
+    pathString.split('/').forEach(function(part){
+        if (keyRxp.test(part)) {
+          buf.push('encodeURIComponent(keys["' + part.match(keyRxp)[1] + '"])');
+        } else {
+          return buf.push('"' + part + '"');
+        }
+    });
 
-    // var body = buf.join(' + "/" + ');
+    var body = [
+      '  keys = keys || {};'
+      '  return ' + buf.join(' + "/" + ') + ';'
+    ].join('\n');
 
-    // var template = new Function('keys', '  return ' + body + ';');
-
-    // console.log(template({userId: 'david', postId: 1, commentId: 10}));
-    // console.log(template);
+    app._paths[pathName] = new Function('keys', body);
   }
 
   methods.concat('all').forEach(function(method){
