@@ -1,5 +1,8 @@
 # Pathfinder
+
 Simple named routes for [Express](https://github.com/visionmedia/express).
+
+![travis](https://api.travis-ci.org/davidcornu/path-finder.png)
 
 ## Usage
 
