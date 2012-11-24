@@ -55,5 +55,5 @@ exports.extend = function(app){
     return app._paths[pathName](keys);
   }
 
-  app.locals({p: path});
+  app.locals({p: app.path});
 }
