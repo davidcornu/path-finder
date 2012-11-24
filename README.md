@@ -24,26 +24,27 @@ Simple named routes for [Express](https://github.com/visionmedia/express).
     app.get('/users', function(){...})
 
     // Passing in a name stores the path
-    app.get('/home', 'home', function(){…})
-    app.post('/user/:id', 'user', function(){…});
+    app.get('/home', 'home', function(){...})
+    app.post('/user/:id', 'user', function(){...});
 
     // Paths can be accessed via
-    app.path('home'); // -> '/home'
-    app.path('user', {id: 10}); // -> '/user/10' 
+    app.path('home');           //-> '/home'
+    app.path('user', {id: 10}); //-> '/user/10' 
 
     // Passing in additional options adds them to the query string
-    app.path('home', {p: 1}); // -> '/home?p=1'
+    app.path('home', {p: 1});   //-> '/home?p=1'
     
     // Ad-hoc paths can also be defined
     app.addPath('/promotions', 'promotions');
-    app.path('promotions'); // -> '/promotions'
+    app.path('promotions');     //-> '/promotions'
     
     ```
     
     A `p` method is also made available to views
     
-    ```jade
-    a(href=p('promotions')) Promotions
+    ```
+    a(href=p('promotions'))
+      | View our promotions
     ```
 
 ## Development
@@ -51,17 +52,17 @@ Simple named routes for [Express](https://github.com/visionmedia/express).
 Clone the repo
 
 ```
-git clone git@github.com:davidcornu/path-finder.git
+$ git clone git@github.com:davidcornu/path-finder.git
 ```
 
 Install dependencies
 
 ```
-npm install
+$ npm install
 ```
 
 Run the tests
 
 ```
-npm test
+$ npm test
 ```
