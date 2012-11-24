@@ -64,4 +64,3 @@ describe('path-finder', function(){
     assert.throws(function(){ app.path('booyah'); });
   });
 });
-
