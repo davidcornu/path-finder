@@ -2,7 +2,7 @@
 
 Simple named routes for [Express](https://github.com/visionmedia/express).
 
-![travis](https://api.travis-ci.org/davidcornu/path-finder.png)
+![![Build Status](https://api.travis-ci.org/davidcornu/path-finder.png)](https://travis-ci.org/davidcornu/path-finder)
 
 ## Usage
 
@@ -32,19 +32,19 @@ Simple named routes for [Express](https://github.com/visionmedia/express).
 
     // Paths can be accessed via
     app.path('home');           //-> '/home'
-    app.path('user', {id: 10}); //-> '/user/10' 
+    app.path('user', {id: 10}); //-> '/user/10'
 
     // Passing in additional options adds them to the query string
     app.path('home', {p: 1});   //-> '/home?p=1'
-    
+
     // Ad-hoc paths can also be defined
     app.addPath('/promotions', 'promotions');
     app.path('promotions');     //-> '/promotions'
-    
+
     ```
-    
+
     A `p` method is also made available to views
-    
+
     ```
     a(href=p('promotions'))
       | View our promotions
