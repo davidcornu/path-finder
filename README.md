@@ -2,7 +2,7 @@
 
 Simple named routes for [Express](https://github.com/visionmedia/express).
 
-![![Build Status](https://api.travis-ci.org/davidcornu/path-finder.png)](https://travis-ci.org/davidcornu/path-finder)
+[![Build Status](https://api.travis-ci.org/davidcornu/path-finder.png)](https://travis-ci.org/davidcornu/path-finder)
 
 ## Usage
 
