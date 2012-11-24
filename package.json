@@ -1,13 +1,13 @@
 {
-  "name": "pathfinder",
+  "name": "path-finder",
   "version": "0.0.1",
-  "description": "Named routes for Express",
+  "description": "Named routes for Express.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/mocha/bin/mocha test.js"
   },
-  "repository": "",
-  "author": "David Cornu <david@busbud.com>",
+  "repository": "https://github.com/davidcornu/path-finder.git",
+  "author": "David Cornu <i@davidcornu.com>",
   "license": "BSD",
   "dependencies": {
     "methods": "0.0.1"
