@@ -2,6 +2,7 @@
   "name": "path-finder",
   "version": "0.0.1",
   "description": "Named routes for Express.",
+  "keywords": ["express", "routes", "paths", "routing", "named routes"],
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha test.js"
