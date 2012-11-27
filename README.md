@@ -38,7 +38,7 @@ Simple named routes for [Express](https://github.com/visionmedia/express).
     app.path('home', {p: 1});   //-> '/home?p=1'
 
     // Ad-hoc paths can also be defined
-    app.addPath('/promotions', 'promotions');
+    app.addPath('promotions', '/promotions');
     app.path('promotions');     //-> '/promotions'
 
     ```
