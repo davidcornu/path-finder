@@ -14,7 +14,7 @@
     "methods": "0.0.1"
   },
   "devDependencies": {
-    "express": "~3.0.3",
+    "express": "*",
     "mocha": "~1.7.1"
   }
 }
