@@ -50,10 +50,10 @@ exports.extend = function(app){
     }
   });
 
-  app.path = function(pathName, keys){
+  app.p = function(pathName, keys){
     if (!app._paths[pathName]) throw 'Path ' + pathName + ' is not defined.';
     return app._paths[pathName](keys);
   }
 
-  app.locals({p: app.path});
+  app.locals({p: app.p});
 }

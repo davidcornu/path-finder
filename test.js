@@ -10,7 +10,7 @@ describe('path-finder', function(){
   it('should extend an express app', function(){
     assert(app.addPath);
     assert(app._paths);
-    assert(app.path);
+    assert(app.p);
   });
 
   it('should add a view helper', function(){
@@ -24,12 +24,12 @@ describe('path-finder', function(){
 
   it('should add named routes when a name is passed', function(){
     app.get('/user', 'user', function(req, res){ return res.end('david'); });
-    assert.equal('/user', app.path('user'));
+    assert.equal('/user', app.p('user'));
   });
 
   it('should work with app.all', function(){
     app.all('/pages', 'pages', function(req, res){ return res.end('pages'); });
-    assert.equal('/pages', app.path('pages'));
+    assert.equal('/pages', app.p('pages'));
     assert.equal('/pages', app.routes.unsubscribe[0].path);
   })
 
@@ -37,18 +37,18 @@ describe('path-finder', function(){
     app.post('/users/:userId/comments/:commentId/edit', 'edit_comment', function(req, res){
       return res.end('edit');
     });
-    assert.equal('/users/10/comments/11/edit', app.path('edit_comment', {userId: 10, commentId: 11}));
+    assert.equal('/users/10/comments/11/edit', app.p('edit_comment', {userId: 10, commentId: 11}));
   });
 
   it('should pass additional keys into query string', function(){
     app.put('/search', 'search', function(req, res){ return res.end('search'); });
-    assert.equal('/search?q=david%20cornu', app.path('search', {q: 'david cornu'}));
-    assert.equal('/search?q=poodles&p=1', app.path('search', {q: 'poodles', p: 1}));
+    assert.equal('/search?q=david%20cornu', app.p('search', {q: 'david cornu'}));
+    assert.equal('/search?q=poodles&p=1', app.p('search', {q: 'poodles', p: 1}));
   });
 
   it('should accept both param and query string options', function(){
     app.delete('/posts/:id', 'post', function(req, res){ return res.end('post'); });
-    assert.equal('/posts/21?p=2', app.path('post', {id: 21, p: 2}));
+    assert.equal('/posts/21?p=2', app.p('post', {id: 21, p: 2}));
   });
 
   it('should return identical results using the view helper', function(){
@@ -57,10 +57,17 @@ describe('path-finder', function(){
 
   it('should allow ad-hoc paths to be added', function(){
     app.addPath('directions', '/directions/:from/:to');
-    assert.equal('/directions/paris/berlin', app.path('directions', {from: 'paris', to: 'berlin'}));
+    assert.equal('/directions/paris/berlin', app.p('directions', {from: 'paris', to: 'berlin'}));
   });
 
   it('should throw for undefined paths', function(){
-    assert.throws(function(){ app.path('booyah'); });
+    assert.throws(function(){ app.p('booyah'); });
+  });
+
+  it('should not overwrite any of express\' internal methods', function(){
+    var cleanApp = express();
+    assert(!cleanApp._paths, 'does not overwrite app._paths');
+    assert(!cleanApp.addPath, 'does not overwrite app.addPath');
+    assert(!cleanApp.p, 'does not overwrite app.p');
   });
 });

@@ -31,15 +31,15 @@ Simple named routes for [Express](https://github.com/visionmedia/express).
     app.post('/user/:id', 'user', function(){...});
 
     // Paths can be accessed via
-    app.path('home');           //-> '/home'
-    app.path('user', {id: 10}); //-> '/user/10'
+    app.p('home');           //-> '/home'
+    app.p('user', {id: 10}); //-> '/user/10'
 
     // Passing in additional options adds them to the query string
-    app.path('home', {p: 1});   //-> '/home?p=1'
+    app.p('home', {p: 1});   //-> '/home?p=1'
 
     // Ad-hoc paths can also be defined
     app.addPath('promotions', '/promotions');
-    app.path('promotions');     //-> '/promotions'
+    app.p('promotions');     //-> '/promotions'
 
     ```
 
