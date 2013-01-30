@@ -4,6 +4,13 @@ Simple named routes for [Express](https://github.com/visionmedia/express).
 
 [![Build Status](https://api.travis-ci.org/davidcornu/path-finder.png)](https://travis-ci.org/davidcornu/path-finder)
 
+## Deprecation Warning
+
+The following methods will print deprecation messages when used as extending the
+express `app` variable is error prone and doesn't really provide a better interface,
+especially when calling routes from controllers (`req.app.p('login')` is a lot
+more verbose than simply requiring `path-finder`).
+
 ## Usage
 
 1. Install via [npm](https://npmjs.org)
@@ -17,7 +24,8 @@ Simple named routes for [Express](https://github.com/visionmedia/express).
     ```javascript
     var express = require('express');
     var app = express();
-    require('path-finder').extend(app);
+    var pathFinder = require('path-finder');
+    pathFinder.extend(app);
     ```
 
 3. Profit
@@ -31,16 +39,15 @@ Simple named routes for [Express](https://github.com/visionmedia/express).
     app.post('/user/:id', 'user', function(){...});
 
     // Paths can be accessed via
-    app.p('home');           //-> '/home'
-    app.p('user', {id: 10}); //-> '/user/10'
+    pathFinder.path('home');           //-> '/home'
+    pathFinder.path('user', {id: 10}); //-> '/user/10'
 
     // Passing in additional options adds them to the query string
-    app.p('home', {p: 1});   //-> '/home?p=1'
+    pathFinder.path('home', {p: 1});   //-> '/home?p=1'
 
     // Ad-hoc paths can also be defined
-    app.addPath('promotions', '/promotions');
-    app.p('promotions');     //-> '/promotions'
-
+    pathFinder.addPath('promotions', '/promotions');
+    pathFinder.path('promotions');     //-> '/promotions'
     ```
 
     A `p` method is also made available to views
