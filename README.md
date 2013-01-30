@@ -11,6 +11,11 @@ express `app` variable is error prone and doesn't really provide a better interf
 especially when calling routes from controllers (`req.app.p('login')` is a lot
 more verbose than simply requiring `path-finder`).
 
+```javascript
+app.p(pathname)
+app.addPath(pathname, path)
+```
+
 ## Usage
 
 1. Install via [npm](https://npmjs.org)
