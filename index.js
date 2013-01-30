@@ -2,7 +2,7 @@ var methods     = require('methods');
 var querystring = require('querystring');
 var keyRxp      = /:(\w+)/;
 
-var __paths = {};
+var _paths = {};
 
 function addPath(pathName, pathString){
   var keyList = [];
@@ -32,16 +32,12 @@ function addPath(pathName, pathString){
   };
 };
 
-exports.addPath = addPath;
-
 function path(pathName, keys){
   if (!_paths[pathName]) throw new Error('Path ' + pathName + ' is not defined.');
   return _paths[pathName](keys);
 }
 
-exports.path = path;
-
-exports.extend = function(app){
+function extend(app){
   app.addPath = function(){
     console.log('app.addPath is deprecated, see https://github.com/davidcornu/path-finder for details');
     return addPath.apply(null, arguments);
@@ -69,4 +65,10 @@ exports.extend = function(app){
       return proxy();
     }
   });
+};
+
+module.exports = {
+  path: path,
+  addPath: addPath,
+  extend: extend
 };
