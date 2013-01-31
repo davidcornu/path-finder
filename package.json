@@ -1,6 +1,6 @@
 {
   "name": "path-finder",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Named routes for Express.",
   "keywords": ["express", "routes", "paths", "routing", "named routes"],
   "main": "index.js",
