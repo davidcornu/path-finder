@@ -48,10 +48,10 @@ function extend(app){
     return path.apply(null, arguments);
   }
 
-  app.locals({p: path});
+  if (typeof app.locals === 'function') app.locals({p: path});
 
   methods.concat('all').forEach(function(method){
-    var original = app[method];
+    var original = app[method] || function(){};
     app[method] = function(){
       var args = Array.prototype.slice.call(arguments);
 
